@@ -3,7 +3,6 @@
 // Connect to our MySql DB
 class Database
 {
-
     public PDO $connection;
 
     public function __construct($config, $username = 'root', $password = '')
