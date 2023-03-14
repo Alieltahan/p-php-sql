@@ -1,12 +1,15 @@
 <?php
-
-use JetBrains\PhpStorm\NoReturn;
+/**
+ * @category     Php-SQL
+ * @package      Php
+ * @author       Ali Eltahan <info@alieltahan.com>
+ */
 
 /**
  * @param $value
  * @return void
  */
-#[NoReturn] function dd($value): void
+function dd($value): void
 {
     echo "<pre>";
     var_dump($value);

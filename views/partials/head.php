@@ -1,3 +1,11 @@
+<?php
+/**
+ * @category     Php-SQL
+ * @package      Php
+ * @author       Ali Eltahan <info@alieltahan.com>
+ */
+?>
+
 <!doctype html>
 <html lang="en" class="h-full bg-gray-100">
 <head>
