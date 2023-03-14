@@ -25,3 +25,14 @@ function urlIs($value): bool
 {
     return $_SERVER['REQUEST_URI'] === $value;
 }
+
+/**
+ * @param $condition
+ * @param $status
+ * @return void
+ */
+function authorize ($condition, $status = Response::FORBIDDEN) {
+    if(!$condition) {
+        abort($status);
+    }
+}

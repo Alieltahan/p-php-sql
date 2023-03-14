@@ -9,6 +9,7 @@
 class Database
 {
     public PDO $connection;
+    public $statement;
 
     public function __construct($config, $username = 'root', $password = '')
     {
@@ -21,12 +22,39 @@ class Database
     /**
      * @param string $query
      * @param array $params
-     * @return false|PDOStatement
+     * @return Database
      */
-    public function query(string $query, array $params = [])
+    public function query(string $query, array $params = []): Database
     {
-        $statement = $this->connection->prepare($query);
-        $statement->execute($params);
-        return $statement;
+        $this->statement = $this->connection->prepare($query);
+        $this->statement->execute($params);
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAll () {
+        return $this->statement->fetchAll();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function find()
+    {
+        return $this->statement->fetch();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function fetchOrFail()
+    {
+        $result = $this->find();
+        if (!$result) {
+            abort();
+        }
+        return $result;
     }
 }
