@@ -13,13 +13,8 @@ $heading = 'Create Note';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
 
-    if (strlen($_POST['body']) === 0) {
-        $errors['body'] = 'Body is required';
-    }
-
-    if (strlen($_POST['body']) > 1000) {
-        $charLen = strlen($_POST['body']);
-        $errors['body'] = "Max characters allowed are 1,000 character only, you have inserted $charLen character.";
+    if (!Validator::string($_POST['body'], 1, 1000)) {
+        $errors['body'] = 'Note characters should be more than 1 character and less than 1,000 character';
     }
 
     if (empty($errors)) {
@@ -31,4 +26,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-require 'views/note-create.view.php';
+require 'views/notes/create.view.php';
