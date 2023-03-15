@@ -1,7 +1,7 @@
 # Weather-Journal App Project
 
 - [Overview](#Overview)
-- [Project technologies](#Project_technologies)
+- [Project_technologies](#Technologies)
 - [Author](#Author)
 
 ## Overview
@@ -12,7 +12,7 @@
 - Validation input.
 - Handling routing & authorization.
 
-### Project_technologies
+### Technologies
 
 **PHP, MySql**
 
