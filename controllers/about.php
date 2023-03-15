@@ -5,6 +5,6 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-$heading = 'About Us';
-
-require "views/about.view.php";
+view("about", [
+    'heading' => 'About Us',
+]);

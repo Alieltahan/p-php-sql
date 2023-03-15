@@ -5,6 +5,10 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
+namespace Core;
+
+use PDO;
+
 // Connect to our MySql DB
 class Database
 {

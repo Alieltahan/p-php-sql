@@ -5,7 +5,9 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-$config = require('config.php');
+use Core\Database;
+
+$config = require base_path('config.php');
 $db = new Database($config['database']);
 
 $heading = 'Note';
@@ -17,4 +19,7 @@ $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])-
 
 authorize($note['user_id'] === $currentUser);
 
-require "views/notes/show.view.php";
+view("notes/show", [
+    'heading' => 'Note',
+    'note' => $note
+]);

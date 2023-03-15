@@ -5,13 +5,15 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-$config = require('config.php');
+use Core\Database;
+
+$config = require base_path('config.php');
 $db = new Database($config['database']);
 
 $heading = 'Create Note';
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $errors = [];
 
     if (!Validator::string($_POST['body'], 1, 1000)) {
         $errors['body'] = 'Note characters should be more than 1 character and less than 1,000 character';
@@ -26,4 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-require 'views/notes/create.view.php';
+view("notes/create", [
+    'heading' => 'Create Note',
+    'errors' => $errors
+]);

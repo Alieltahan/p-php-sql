@@ -4,12 +4,16 @@
  * @package      Php
  * @author       Ali Eltahan <info@alieltahan.com>
  */
+const BASE_PATH = __DIR__.'/../';
 
-require './functions.php';
-require 'Database.php';
-require 'Response.php';
-require 'Validator.php';
-require 'router/router.php';
+require BASE_PATH . 'Core/functions.php';
+
+spl_autoload_register(function ($class) {
+    $class = str_replace('\\',DIRECTORY_SEPARATOR, $class);
+    require base_path("$class.php");
+});
+
+require base_path('router/router.php');
 $config = require 'config.php';
 
 

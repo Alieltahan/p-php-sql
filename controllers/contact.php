@@ -5,6 +5,6 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-$heading = 'Contact Us';
-
-require "views/contact.view.php";
+view("contact", [
+    'heading' => 'Contact Us',
+]);

@@ -5,6 +5,8 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
+use Core\Response;
+
 /**
  * @param $value
  * @return void
@@ -28,11 +30,27 @@ function urlIs($value): bool
 
 /**
  * @param $condition
- * @param $status
+ * @param int $status
  * @return void
  */
-function authorize ($condition, $status = Response::FORBIDDEN) {
+function authorize ($condition, int $status = Response::FORBIDDEN) {
     if(!$condition) {
         abort($status);
     }
+}
+
+/**
+ * @param $path
+ * @return string
+ */
+function base_path($path): string
+{
+    return BASE_PATH . $path;
+}
+
+function view($path, $attributes = [])
+{
+    extract($attributes);
+
+    require base_path('views/' . $path . '.view.php');
 }

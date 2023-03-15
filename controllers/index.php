@@ -5,6 +5,6 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
-$heading = "Home";
-
-require "views/index.view.php";
+view("index", [
+    'heading' => 'Home',
+]);
