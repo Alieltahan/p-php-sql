@@ -54,3 +54,16 @@ function view($path, $attributes = [])
 
     require base_path('views/' . $path . '.view.php');
 }
+
+/**
+ * @param int $code
+ * @return void
+ */
+function abort(int $code = 404)
+{
+    http_response_code($code);
+
+    require base_path("views/{$code}.php");
+
+    die();
+}

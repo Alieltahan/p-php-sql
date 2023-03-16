@@ -12,10 +12,14 @@ $db = new Database($config['database']);
 $currentUser = 1;
 $heading = 'Note';
 
-$note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])->fetchOrFail();
+$note = $db->query('select * from notes where id = :id', ['id' => $_POST['id']])->fetchOrFail();
+
 authorize($note['user_id'] === $currentUser);
 
-view("notes/show", [
-    'heading' => 'Note',
-    'note' => $note
+$db->query('DELETE from notes where id = :id', [
+    'id' => $_POST['id']
 ]);
+
+header('location: /notes');
+exit();
+
