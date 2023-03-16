@@ -1,4 +1,4 @@
-# Weather-Journal App Project
+# Notes App
 
 - [Overview](#Overview)
 - [Project_technologies](#Technologies)
