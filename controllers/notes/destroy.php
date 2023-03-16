@@ -7,8 +7,10 @@
 
 use Core\Database;
 
-$config = require base_path('config.php');
-$db = new Database($config['database']);
+use Core\App;
+
+$db = App::resolve(Database::class);
+
 $currentUser = 1;
 $heading = 'Note';
 
@@ -22,4 +24,3 @@ $db->query('DELETE from notes where id = :id', [
 
 header('location: /notes');
 exit();
-
