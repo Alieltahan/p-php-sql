@@ -11,7 +11,6 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-
 $heading = 'My Notes';
 
 $notes = $db->query('select * from notes where user_id = 1')->getAll();

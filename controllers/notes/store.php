@@ -5,6 +5,8 @@
  * @author       Ali Eltahan <info@alieltahan.com>
  */
 
+use Core\Response;
+
 use Core\Validator;
 
 use Core\Database;
@@ -16,7 +18,7 @@ $db = App::resolve(Database::class);
 $heading = 'Create Note';
 $errors = [];
 
-if (!Validator::string($_POST['body'], 1, 1000)) {
+if (!Validator::string($_POST['body'], Response::MIN_CHAR, Response::MAX_CHAR)) {
     $errors['body'] = 'Note characters should be more than 1 character and less than 1,000 character';
 }
 

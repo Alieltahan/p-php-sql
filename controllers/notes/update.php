@@ -8,6 +8,7 @@
 use Core\App;
 use Core\Database;
 use Core\Validator;
+use Core\Response;
 
 $db = App::resolve(Database::class);
 
@@ -24,8 +25,8 @@ authorize($note['user_id'] === $currentUserId);
 // validate the form
 $errors = [];
 
-if (!Validator::string($_POST['body'], 1, 1000)) {
-    $errors['body'] = 'A body of no more than 1,000 characters is required.';
+if (!Validator::string($_POST['body'], Response::MIN_CHAR, Response::MAX_CHAR)) {
+    $errors['body'] = 'Note characters should be more than 1 character and less than 1,000 character.';
 }
 
 // if no validation errors, update the record in the notes database table.
