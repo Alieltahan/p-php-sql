@@ -11,6 +11,7 @@
 - Ability to add notes to DB and retrieve it all/single.
 - Validation input.
 - Handling routing & authorization.
+- Register / Login / Logout.
 
 ### Technologies
 

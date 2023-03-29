@@ -33,8 +33,9 @@ function urlIs($value): bool
  * @param int $status
  * @return void
  */
-function authorize ($condition, int $status = Response::FORBIDDEN) {
-    if(!$condition) {
+function authorize($condition, int $status = Response::FORBIDDEN)
+{
+    if (!$condition) {
         abort($status);
     }
 }
@@ -66,4 +67,27 @@ function abort(int $code = 404)
     require base_path("views/{$code}.php");
 
     die();
+}
+
+/**
+ * @param $user
+ * @return void
+ */
+function login($user)
+{
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+
+    session_regenerate_id(true);
+}
+
+function logout()
+{
+    $_SESSION = [];
+    session_destroy();
+
+    $params = session_get_cookie_params();
+    setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+
 }
